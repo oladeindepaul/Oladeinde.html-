@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EA Portfolio — Black & White + Green Accent</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:      #0F0F0F;
+    --black-soft: #1A1A1A;
+    --grey-dark:  #3A3A3A;
+    --grey-mid:   #6B6B6B;
+    --grey-light: #ADADAD;
+    --grey-line:  #E2E2E2;
+    --white:      #F8F5F0;
+    --white-pure: #FFFFFF;
+    --green:      #3A9E5F;
+    --green-dark: #2D7A49;
+    --green-pale: #EAF5EE;
+
+    --bg:       var(--white);
+    --surface:  var(--white-pure);
+    --fg:       var(--black);
+    --fg-soft:  var(--grey-dark);
+    --fg-muted: var(--grey-mid);
+    --bd:       var(--grey-line);
+    --nav-bg:   rgba(248,245,240,0.94);
+  }
+
+  [data-theme="dark"] {
+    --bg:       var(--black);
+    --surface:  var(--black-soft);
+    --fg:       var(--white);
+    --fg-soft:  var(--grey-light);
+    --fg-muted: var(--grey-mid);
+    --bd:       #2A2A2A;
+    --nav-bg:   rgba(15,15,15,0.94);
+    --green-pale: rgba(58,158,95,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { display: block; max-width: 100%; }
+
+  /* PAGE HEADER */
+  .page-header {
+    text-align: center;
+    padding: 60px 24px 40px;
+  }
+  .page-header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--fg);
+    margin-bottom: 8px;
+  }
+  .page-header h1 em { font-style: italic; color: var(--green); }
+  .page-header p {
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .toggle-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 24px 50px;
+  }
+  .toggle-btn {
+    padding: 10px 28px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: 500;
+  }
+  .toggle-btn.light {
+    background: var(--white);
+    color: var(--black);
+    border: 1.5px solid var(--black);
+  }
+  .toggle-btn.dark {
+    background: var(--black);
+    color: var(--white);
+    border: 1.5px solid var(--black);
+  }
+  .toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  .wrapper {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .mode-preview {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+
+  /* ── LIGHT MODE ── */
+  .lm { background: #F8F5F0; }
+
+  .lm .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #F8F5F0;
+    border-bottom: 1px solid #E2E2E2;
+  }
+  .lm .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem;
+    color: #0F0F0F;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lm .nav-mark {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #0F0F0F;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #F8F5F0;
+  }
+  .lm .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .lm .nav-links a {
+    font-size: 0.8rem;
+    color: #6B6B6B;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .lm .nav-links a:hover { color: #3A9E5F; }
+  .lm .nav-cta {
+    background: #0F0F0F;
+    color: #F8F5F0;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+  .lm .nav-cta:hover { background: #3A9E5F; }
+
+  /* HERO */
+  .lm .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+  .lm .hero-left {
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+  .lm .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3A9E5F;
+    margin-bottom: 20px;
+  }
+  .lm .hero-tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #3A9E5F;
+    animation: blink 2s infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity:1; } 50% { opacity:0.3; }
+  }
+  .lm .hero h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: #0F0F0F;
+    margin-bottom: 20px;
+  }
+  .lm .hero h2 em {
+    font-style: italic;
+    color: #3A9E5F;
+  }
+  .lm .hero-desc {
+    font-size: 0.9rem;
+    color: #6B6B6B;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+  .lm .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .lm .btn-primary {
+    background: #0F0F0F;
+    color: #F8F5F0;
+    padding: 13px 26px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .lm .btn-primary:hover { background: #3A9E5F; transform: translateY(-2px); }
+  .lm .btn-secondary {
+    background: transparent;
+    color: #0F0F0F;
+    padding: 13px 26px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    border: 1.5px solid #E2E2E2;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .lm .btn-secondary:hover { border-color: #0F0F0F; transform: translateY(-2px); }
+
+  /* HERO RIGHT — PHOTO */
+  .lm .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #1A1A1A;
+    min-height: 460px;
+  }
+  .lm .hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(100%);
+    transition: filter 1.2s ease;
+    display: block;
+    opacity: 0.85;
+  }
+  .lm .hero-photo.in-view { filter: grayscale(0%); opacity: 1; }
+  .lm .hero-rating {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: rgba(248,245,240,0.95);
+    backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #0F0F0F;
+    border: 1px solid #E2E2E2;
+  }
+  .lm .hero-rating-star { color: #3A9E5F; font-size: 0.8rem; }
+
+  /* STATS */
+  .lm .stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid #E2E2E2;
+  }
+  .lm .stat {
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid #E2E2E2;
+  }
+  .lm .stat:last-child { border-right: none; }
+  .lm .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #0F0F0F;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .lm .stat-label {
+    font-size: 0.68rem;
+    color: #ADADAD;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* TICKER */
+  .lm .ticker {
+    background: #0F0F0F;
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .lm .ticker-track {
+    display: flex;
+    gap: 48px;
+    animation: scroll 20s linear infinite;
+    width: max-content;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .lm .ticker-item {
+    font-size: 0.72rem;
+    color: rgba(248,245,240,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .lm .ticker-dot { color: #3A9E5F; font-size: 0.5rem; }
+
+  /* SERVICE CARDS */
+  .lm .services {
+    padding: 60px 40px;
+    background: #F8F5F0;
+  }
+  .lm .s-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+  }
+  .lm .s-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3A9E5F;
+    margin-bottom: 8px;
+  }
+  .lm .s-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: #0F0F0F;
+  }
+  .lm .s-title em { font-style: italic; color: #3A9E5F; }
+  .lm .s-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #0F0F0F;
+    display: flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+    transition: gap 0.2s, color 0.2s;
+  }
+  .lm .s-link:hover { color: #3A9E5F; gap: 10px; }
+  .lm .s-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+  }
+  .lm .s-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid #E2E2E2;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .lm .s-card:hover {
+    border-color: #0F0F0F;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+  .lm .s-icon {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+  .lm .s-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1rem;
+    color: #0F0F0F;
+    margin-bottom: 8px;
+  }
+  .lm .s-desc {
+    font-size: 0.82rem;
+    color: #6B6B6B;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .lm .s-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #3A9E5F;
+    transition: gap 0.2s;
+  }
+  .lm .s-card:hover .s-card-link { gap: 9px; }
+
+  /* ── DARK MODE ── */
+  .dm { background: #0F0F0F; }
+
+  .dm .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #0F0F0F;
+    border-bottom: 1px solid #2A2A2A;
+  }
+  .dm .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem;
+    color: #F8F5F0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .dm .nav-mark {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #F8F5F0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #0F0F0F;
+  }
+  .dm .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .dm .nav-links a {
+    font-size: 0.8rem;
+    color: #6B6B6B;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .dm .nav-links a:hover { color: #3A9E5F; }
+  .dm .nav-cta {
+    background: #F8F5F0;
+    color: #0F0F0F;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; gap: 6px;
+    transition: background 0.2s;
+  }
+  .dm .nav-cta:hover { background: #3A9E5F; color: white; }
+
+  .dm .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+  .dm .hero-left {
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dm .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3A9E5F;
+    margin-bottom: 20px;
+  }
+  .dm .hero-tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #3A9E5F;
+    animation: blink 2s infinite;
+  }
+  .dm .hero h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: #F8F5F0;
+    margin-bottom: 20px;
+  }
+  .dm .hero h2 em { font-style: italic; color: #3A9E5F; }
+  .dm .hero-desc {
+    font-size: 0.9rem;
+    color: #6B6B6B;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+  .dm .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .dm .btn-primary {
+    background: #F8F5F0;
+    color: #0F0F0F;
+    padding: 13px 26px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .dm .btn-primary:hover { background: #3A9E5F; color: white; transform: translateY(-2px); }
+  .dm .btn-secondary {
+    background: transparent;
+    color: #F8F5F0;
+    padding: 13px 26px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    border: 1.5px solid #2A2A2A;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .dm .btn-secondary:hover { border-color: #F8F5F0; transform: translateY(-2px); }
+
+  .dm .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #1A1A1A;
+    min-height: 460px;
+  }
+  .dm .hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(100%);
+    transition: filter 1.2s ease;
+    display: block;
+    opacity: 0.6;
+  }
+  .dm .hero-photo.in-view { filter: grayscale(0%); opacity: 1; }
+  .dm .hero-rating {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: rgba(15,15,15,0.9);
+    backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 100px;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #F8F5F0;
+    border: 1px solid #2A2A2A;
+  }
+  .dm .hero-rating-star { color: #3A9E5F; }
+
+  .dm .stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid #2A2A2A;
+    background: #0F0F0F;
+  }
+  .dm .stat {
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid #2A2A2A;
+  }
+  .dm .stat:last-child { border-right: none; }
+  .dm .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #F8F5F0;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .dm .stat-label {
+    font-size: 0.68rem;
+    color: #3A3A3A;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .dm .ticker {
+    background: #1A1A1A;
+    padding: 14px 0;
+    overflow: hidden;
+    border-top: 1px solid #2A2A2A;
+  }
+  .dm .ticker-track {
+    display: flex;
+    gap: 48px;
+    animation: scroll 20s linear infinite;
+    width: max-content;
+  }
+  .dm .ticker-item {
+    font-size: 0.72rem;
+    color: rgba(248,245,240,0.2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .dm .ticker-dot { color: #3A9E5F; opacity: 0.6; font-size: 0.5rem; }
+
+  .dm .services {
+    padding: 60px 40px;
+    background: #0F0F0F;
+  }
+  .dm .s-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+  }
+  .dm .s-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3A9E5F;
+    margin-bottom: 8px;
+  }
+  .dm .s-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: #F8F5F0;
+  }
+  .dm .s-title em { font-style: italic; color: #3A9E5F; }
+  .dm .s-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #F8F5F0;
+    display: flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+    transition: gap 0.2s, color 0.2s;
+  }
+  .dm .s-link:hover { color: #3A9E5F; gap: 10px; }
+  .dm .s-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+  }
+  .dm .s-card {
+    background: #1A1A1A;
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid #2A2A2A;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .dm .s-card:hover {
+    border-color: #F8F5F0;
+    transform: translateY(-3px);
+  }
+  .dm .s-icon { font-size: 1.4rem; margin-bottom: 16px; }
+  .dm .s-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1rem;
+    color: #F8F5F0;
+    margin-bottom: 8px;
+  }
+  .dm .s-desc {
+    font-size: 0.82rem;
+    color: #6B6B6B;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .dm .s-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #3A9E5F;
+    transition: gap 0.2s;
+  }
+  .dm .s-card:hover .s-card-link { gap: 9px; }
+
+  /* ── SWATCHES ── */
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    font-weight: 500;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  .swatch { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .swatch-color { height: 72px; }
+  .swatch-info { padding: 10px 12px; background: white; }
+  .swatch-name { font-size: 0.75rem; font-weight: 600; color: #0F0F0F; margin-bottom: 2px; }
+  .swatch-hex { font-size: 0.68rem; color: #ADADAD; font-family: monospace; }
+
+  /* ── TYPE ── */
+  .type-preview {
+    background: white;
+    border-radius: 20px;
+    padding: 44px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  }
+  .type-display {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    color: #0F0F0F;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .type-display em { color: #3A9E5F; font-style: italic; }
+  .type-sub {
+    font-size: 0.88rem;
+    color: #6B6B6B;
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 16px;
+    max-width: 520px;
+  }
+  .type-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #3A9E5F;
+    font-weight: 600;
+  }
+
+  /* ── FEEL ── */
+  .feel-board {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+  }
+  .feel-card {
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feel-icon { font-size: 1.5rem; }
+  .feel-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1rem;
+    color: #0F0F0F;
+  }
+  .feel-desc {
+    font-size: 0.8rem;
+    color: #6B6B6B;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  @media (max-width: 640px) {
+    .lm .hero, .dm .hero { grid-template-columns: 1fr; }
+    .lm .hero-right, .dm .hero-right { min-height: 300px; }
+    .lm .stats, .dm .stats { grid-template-columns: repeat(2,1fr); }
+    .lm .s-grid, .dm .s-grid { grid-template-columns: 1fr; }
+    .feel-board { grid-template-columns: 1fr; }
+    .lm .nav-links, .dm .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>EA Portfolio — <em>Black, White & Green</em></h1>
+  <p>Palette Preview · Timeless · Minimal · Premium</p>
+</div>
+
+<div class="toggle-bar">
+  <button class="toggle-btn light" onclick="document.documentElement.setAttribute('data-theme','light')">☀ Light</button>
+  <button class="toggle-btn dark" onclick="document.documentElement.setAttribute('data-theme','dark')">🌙 Dark</button>
+</div>
+
+<div class="wrapper">
+
+  <!-- LIGHT -->
+  <div>
+    <p class="section-label">☀ Light Mode</p>
+    <div class="mode-preview lm">
+      <nav class="nav">
+        <span class="nav-logo"><span class="nav-mark">P</span> Paul Oladeinde</span>
+        <ul class="nav-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Work</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Hire Me</a></li>
+        </ul>
+        <button class="nav-cta">Book a Meeting ↗</button>
+      </nav>
+      <div class="hero">
+        <div class="hero-left">
+          <div class="hero-tag"><span class="hero-tag-dot"></span> Executive & Operations Assistant</div>
+          <h2>The operator behind <em>every great outcome.</em></h2>
+          <p class="hero-desc">I bring order to complexity — managing schedules, operations, and communications so executives can lead without distraction.</p>
+          <div class="btn-row">
+            <button class="btn-primary">View My Work ↗</button>
+            <button class="btn-secondary">Hire Me</button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <img src="https://res.cloudinary.com/dt8eebw4e/image/upload/v1781385770/PHOTO-2026-02-22-13-26-04_wy1bmb.jpg" class="hero-photo lm-photo" alt="Paul Oladeinde" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(100%);transition:filter 1.2s ease;" />
+          <div class="hero-rating"><span class="hero-rating-star">★</span> Available for hire</div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Exp.</div></div>
+        <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Executives</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Remote Ready</div></div>
+        <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Industries</div></div>
+      </div>
+      <div class="ticker">
+        <div class="ticker-track">
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Calendar Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Travel Coordination</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Inbox Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Project Support</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Board Prep</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Stakeholder Liaison</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Vendor Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Calendar Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Travel Coordination</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Inbox Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Project Support</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Board Prep</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Stakeholder Liaison</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Vendor Management</span>
+        </div>
+      </div>
+      <div class="services">
+        <div class="s-head">
+          <div>
+            <div class="s-eyebrow">What I Do</div>
+            <div class="s-title">Services I <em>provide</em></div>
+          </div>
+          <a href="#" class="s-link">View all →</a>
+        </div>
+        <div class="s-grid">
+          <div class="s-card">
+            <div class="s-icon">📅</div>
+            <div class="s-name">Calendar Management</div>
+            <p class="s-desc">Strategic scheduling that protects your time and keeps priorities aligned.</p>
+            <span class="s-card-link">Learn more →</span>
+          </div>
+          <div class="s-card">
+            <div class="s-icon">✈️</div>
+            <div class="s-name">Travel Coordination</div>
+            <p class="s-desc">End-to-end travel planning handled with zero friction.</p>
+            <span class="s-card-link">Learn more →</span>
+          </div>
+          <div class="s-card">
+            <div class="s-icon">📬</div>
+            <div class="s-name">Inbox & Comms</div>
+            <p class="s-desc">Triaging, drafting, and managing correspondence so nothing slips.</p>
+            <span class="s-card-link">Learn more →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK -->
+  <div>
+    <p class="section-label">🌙 Dark Mode</p>
+    <div class="mode-preview dm">
+      <nav class="nav">
+        <span class="nav-logo"><span class="nav-mark">P</span> Paul Oladeinde</span>
+        <ul class="nav-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Work</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Hire Me</a></li>
+        </ul>
+        <button class="nav-cta">Book a Meeting ↗</button>
+      </nav>
+      <div class="hero">
+        <div class="hero-left">
+          <div class="hero-tag"><span class="hero-tag-dot"></span> Executive & Operations Assistant</div>
+          <h2>The operator behind <em>every great outcome.</em></h2>
+          <p class="hero-desc">I bring order to complexity — managing schedules, operations, and communications so executives can lead without distraction.</p>
+          <div class="btn-row">
+            <button class="btn-primary">View My Work ↗</button>
+            <button class="btn-secondary">Hire Me</button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <img src="https://res.cloudinary.com/dt8eebw4e/image/upload/v1781385770/PHOTO-2026-02-22-13-26-04_wy1bmb.jpg" alt="Paul Oladeinde" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(100%);transition:filter 1.2s ease;" class="dm-photo" />
+          <div class="hero-rating"><span class="hero-rating-star">★</span> Available for hire</div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Exp.</div></div>
+        <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Executives</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Remote Ready</div></div>
+        <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Industries</div></div>
+      </div>
+      <div class="ticker">
+        <div class="ticker-track">
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Calendar Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Travel Coordination</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Inbox Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Project Support</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Board Prep</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Stakeholder Liaison</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Vendor Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Calendar Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Travel Coordination</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Inbox Management</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Project Support</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Board Prep</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Stakeholder Liaison</span>
+          <span class="ticker-item"><span class="ticker-dot">✦</span>Vendor Management</span>
+        </div>
+      </div>
+      <div class="services">
+        <div class="s-head">
+          <div>
+            <div class="s-eyebrow">What I Do</div>
+            <div class="s-title">Services I <em>provide</em></div>
+          </div>
+          <a href="#" class="s-link">View all →</a>
+        </div>
+        <div class="s-grid">
+          <div class="s-card">
+            <div class="s-icon">📅</div>
+            <div class="s-name">Calendar Management</div>
+            <p class="s-desc">Strategic scheduling that protects your time and keeps priorities aligned.</p>
+            <span class="s-card-link">Learn more →</span>
+          </div>
+          <div class="s-card">
+            <div class="s-icon">✈️</div>
+            <div class="s-name">Travel Coordination</div>
+            <p class="s-desc">End-to-end travel planning handled with zero friction.</p>
+            <span class="s-card-link">Learn more →</span>
+          </div>
+          <div class="s-card">
+            <div class="s-icon">📬</div>
+            <div class="s-name">Inbox & Comms</div>
+            <p class="s-desc">Triaging, drafting, and managing correspondence so nothing slips.</p>
+            <span class="s-card-link">Learn more →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SWATCHES -->
+  <div>
+    <p class="section-label">Color Tokens</p>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0F0F0F;"></div>
+        <div class="swatch-info"><div class="swatch-name">Off-Black</div><div class="swatch-hex">#0F0F0F</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1A1A1A;"></div>
+        <div class="swatch-info"><div class="swatch-name">Black Soft</div><div class="swatch-hex">#1A1A1A</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3A9E5F;"></div>
+        <div class="swatch-info"><div class="swatch-name">Green Accent</div><div class="swatch-hex">#3A9E5F</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B6B6B;"></div>
+        <div class="swatch-info"><div class="swatch-name">Grey Mid</div><div class="swatch-hex">#6B6B6B</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E2E2E2; border:1px solid #ddd;"></div>
+        <div class="swatch-info"><div class="swatch-name">Grey Line</div><div class="swatch-hex">#E2E2E2</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F8F5F0; border:1px solid #eee;"></div>
+        <div class="swatch-info"><div class="swatch-name">Warm White</div><div class="swatch-hex">#F8F5F0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPE -->
+  <div>
+    <p class="section-label">Typography</p>
+    <div class="type-preview">
+      <div class="type-display">The operator behind <em>every great outcome.</em></div>
+      <p class="type-sub">Display: Instrument Serif — clean, confident, modern optical serif. The italic is expressive without being decorative.</p>
+      <p class="type-sub">Body: Inter — the gold standard for readability. Pairs perfectly with any serif display face.</p>
+      <p class="type-label">Green · Italic · Accent Only</p>
+    </div>
+  </div>
+
+  <!-- FEEL -->
+  <div>
+    <p class="section-label">The Feeling</p>
+    <div class="feel-board">
+      <div class="feel-card" style="background:#F8F5F0;">
+        <div class="feel-icon">⬛</div>
+        <div class="feel-title">Timeless</div>
+        <div class="feel-desc">Black and white never goes out of style. It signals that the work speaks for itself — no color tricks needed.</div>
+      </div>
+      <div class="feel-card" style="background:#EAF5EE;">
+        <div class="feel-icon">🟢</div>
+        <div class="feel-title">One Accent, Maximum Impact</div>
+        <div class="feel-desc">Green only appears where it matters — italic headlines, CTAs, hover states. Restraint makes it memorable.</div>
+      </div>
+      <div class="feel-card" style="background:#F0F0F0;">
+        <div class="feel-icon">📸</div>
+        <div class="feel-title">Photo is the Star</div>
+        <div class="feel-desc">On a B&W site, Paul's grayscale-to-color reveal becomes the most dramatic moment on the page. Pure cinema.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
