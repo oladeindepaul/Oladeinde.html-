@@ -7,53 +7,31 @@
   <title>About — Paul Oladeinde</title>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ── */
 :root {
-  --black:      #0F0F0F;
-  --black-soft: #1A1A1A;
-  --black-card: #222222;
-  --grey-dark:  #3A3A3A;
-  --grey-mid:   #6B6B6B;
-  --grey-light: #ADADAD;
-  --grey-line:  #E2E2E2;
-  --white:      #F8F5F0;
-  --white-pure: #FFFFFF;
-  --green:      #3A9E5F;
-  --green-pale: #EAF5EE;
-  --bg:         #F8F5F0;
-  --bg-alt:     #F2EEE8;
-  --surface:    #FFFFFF;
-  --fg:         #0F0F0F;
-  --fg-soft:    #3A3A3A;
-  --fg-muted:   #6B6B6B;
-  --bd:         #E2E2E2;
-  --nav-bg:     rgba(248,245,240,0.94);
-  --font-display: 'Instrument Serif', serif;
-  --font-body:    'Plus Jakarta Sans', sans-serif;
-  --radius-sm:   8px;
-  --radius-md:   12px;
-  --radius-lg:   20px;
-  --radius-full: 100px;
-  --shadow-sm:   0 2px 12px rgba(0,0,0,0.06);
-  --shadow-md:   0 8px 32px rgba(0,0,0,0.10);
-  --shadow-lg:   0 24px 64px rgba(0,0,0,0.14);
-  --transition:  0.3s ease;
+  --black:#0F0F0F;--black-soft:#1A1A1A;--black-card:#222222;
+  --grey-dark:#3A3A3A;--grey-mid:#6B6B6B;--grey-light:#ADADAD;
+  --grey-line:#E2E2E2;--white:#F8F5F0;--white-pure:#FFFFFF;
+  --green:#3A9E5F;--green-pale:#EAF5EE;
+  --bg:#F8F5F0;--bg-alt:#F2EEE8;--surface:#FFFFFF;
+  --fg:#0F0F0F;--fg-soft:#3A3A3A;--fg-muted:#6B6B6B;
+  --bd:#E2E2E2;--nav-bg:rgba(248,245,240,0.94);
+  --font-display:'Instrument Serif',serif;
+  --font-body:'Plus Jakarta Sans',sans-serif;
+  --radius-sm:8px;--radius-md:12px;--radius-lg:20px;--radius-full:100px;
+  --shadow-sm:0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg:0 24px 64px rgba(0,0,0,0.14);
+  --transition:0.3s ease;
 }
 [data-theme="dark"] {
-  --bg:       #0F0F0F;
-  --bg-alt:   #1A1A1A;
-  --surface:  #222222;
-  --fg:       #F8F5F0;
-  --fg-soft:  #ADADAD;
-  --fg-muted: #6B6B6B;
-  --bd:       #2A2A2A;
-  --nav-bg:   rgba(15,15,15,0.94);
-  --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
-  --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
-  --shadow-lg: 0 24px 64px rgba(0,0,0,0.5);
+  --bg:#0F0F0F;--bg-alt:#1A1A1A;--surface:#222222;
+  --fg:#F8F5F0;--fg-soft:#ADADAD;--fg-muted:#6B6B6B;
+  --bd:#2A2A2A;--nav-bg:rgba(15,15,15,0.94);
+  --shadow-sm:0 2px 12px rgba(0,0,0,0.3);
+  --shadow-md:0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg:0 24px 64px rgba(0,0,0,0.5);
 }
 
-/* ── RESET ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--font-body);background:var(--bg);color:var(--fg);line-height:1.6;transition:background 0.5s,color 0.5s;overflow-x:hidden;}
@@ -85,13 +63,13 @@ ul{list-style:none;}
 [data-theme="dark"] .navbar-cta{background:var(--white);color:var(--black);}
 [data-theme="dark"] .navbar-cta:hover{background:var(--green);color:var(--white);}
 .navbar-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
-.navbar-hamburger span{width:22px;height:1.5px;background:var(--fg);border-radius:2px;display:block;transition:0.3s;}
+.navbar-hamburger span{width:22px;height:1.5px;background:var(--fg);border-radius:2px;display:block;}
 .navbar-mobile{display:none;flex-direction:column;padding:20px 40px 24px;border-top:1px solid var(--bd);background:var(--nav-bg);backdrop-filter:blur(14px);gap:18px;}
 .navbar-mobile.open{display:flex;}
 .navbar-mobile a{font-size:0.9rem;color:var(--fg-muted);}
 
-/* ── HERO ── */
-.about-hero{
+/* ── HERO — DESKTOP ── */
+.about-hero {
   padding: 100px 40px 80px;
   max-width: 1200px;
   margin: 0 auto;
@@ -99,110 +77,82 @@ ul{list-style:none;}
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
-  min-height: 100vh;
 }
 
-/* Left — Photo */
-.about-photo-wrap{
-  position: relative;
+/* ── PHOTO — DESKTOP/TABLET ── */
+.about-photo-col { position: relative; }
+
+.about-photo-wrap {
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 3/4;
-  max-height: 600px;
+  width: 100%;
+  position: relative;
 }
-.about-photo{
+.about-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
-  filter: grayscale(100%);
+  /* FIX 1: cinematic B&W with contrast */
+  filter: grayscale(100%) contrast(1.1) brightness(0.95);
   transition: filter 1.2s ease;
 }
-.about-photo.in-view{ filter: grayscale(0%); }
-.about-photo-tag{
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(248,245,240,0.92);
-  backdrop-filter: blur(8px);
-  padding: 10px 22px;
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black);
-  white-space: nowrap;
-  border: 1px solid rgba(248,245,240,0.3);
-}
-[data-theme="dark"] .about-photo-tag{
-  background: rgba(15,15,15,0.85);
-  color: var(--white);
-  border-color: rgba(255,255,255,0.1);
+.about-photo.in-view {
+  filter: grayscale(0%) contrast(1) brightness(1);
 }
 
-/* Right — Content */
-.about-content{
+/* FIX 3: Tag card overlaps bottom of photo on desktop/tablet */
+.about-photo-tag {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: var(--white-pure);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-lg);
+  min-width: 200px;
+  z-index: 2;
+}
+[data-theme="dark"] .about-photo-tag {
+  background: var(--black-card);
+  border: 1px solid var(--bd);
+}
+.about-photo-tag-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.about-photo-tag-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--fg);
+  line-height: 1.2;
+}
+
+/* ── CONTENT ── */
+.about-content {
   padding-top: 32px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
-.about-eyebrow{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.about-eyebrow-line{
-  width: 28px;
-  height: 1.5px;
-  background: var(--green);
-}
-.about-eyebrow-text{
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green);
-}
-.about-name{
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
-  font-weight: 400;
-  line-height: 1.08;
-  color: var(--fg);
-}
-.about-name em{
-  font-style: italic;
-  color: var(--green);
-  display: block;
-}
-.about-tagline{
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--fg-soft);
-  line-height: 1.5;
-  border-left: 2px solid var(--green);
-  padding-left: 16px;
-}
-.about-bio{
-  font-size: 0.92rem;
-  color: var(--fg-soft);
-  line-height: 1.9;
-  font-weight: 300;
-}
-.about-bio p + p{ margin-top: 14px; }
+.about-eyebrow { display:flex;align-items:center;gap:10px; }
+.about-eyebrow-line { width:28px;height:1.5px;background:var(--green); }
+.about-eyebrow-text { font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green); }
+.about-name { font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;line-height:1.08;color:var(--fg); }
+.about-name em { font-style:italic;color:var(--green);display:block; }
+.about-tagline { font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--fg-soft);line-height:1.6;border-left:2px solid var(--green);padding-left:16px; }
+.about-bio { font-size:0.92rem;color:var(--fg-soft);line-height:1.9;font-weight:300; }
+.about-bio p+p { margin-top:14px; }
 
-/* CTA buttons */
-.about-btns{
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
+/* Buttons */
+.about-btns { display:flex;gap:14px;flex-wrap:wrap;align-items:center; }
 .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--white);padding:14px 28px;border-radius:100px;font-size:0.85rem;font-weight:600;letter-spacing:0.04em;border:none;cursor:pointer;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;font-family:var(--font-body);}
 .btn-primary:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 8px 24px rgba(58,158,95,0.25);}
 [data-theme="dark"] .btn-primary{background:var(--white);color:var(--black);}
@@ -211,282 +161,152 @@ ul{list-style:none;}
 .btn-secondary:hover{border-color:var(--black);transform:translateY(-2px);}
 [data-theme="dark"] .btn-secondary:hover{border-color:var(--white);}
 
-/* Info cards grid */
-.about-info-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.info-card{
-  background: var(--surface);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-md);
-  padding: 18px 20px;
-  transition: border-color var(--transition), transform var(--transition);
-}
-.info-card:hover{
-  border-color: var(--green);
-  transform: translateY(-2px);
-}
-.info-card-label{
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 6px;
-}
-.info-card-value{
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--fg);
-}
+/* Info cards */
+.about-info-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.info-card { background:var(--surface);border:1px solid var(--bd);border-radius:var(--radius-md);padding:18px 20px;transition:border-color var(--transition),transform var(--transition); }
+.info-card:hover { border-color:var(--green);transform:translateY(-2px); }
+.info-card-label { font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:6px; }
+.info-card-value { font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--fg); }
 
 /* ── WHAT YOU CAN EXPECT ── */
-.expect-wrap{
-  background: var(--bg-alt);
-  border-top: 1px solid var(--bd);
-  border-bottom: 1px solid var(--bd);
-}
-[data-theme="dark"] .expect-wrap{ background: var(--bg-alt); }
-.section{padding:100px 40px;max-width:1200px;margin:0 auto;}
-.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.section-eyebrow-line{width:28px;height:1.5px;background:var(--green);flex-shrink:0;}
-.section-eyebrow-text{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);}
-.section-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:400;color:var(--fg);margin-bottom:14px;line-height:1.12;}
-.section-title em{font-style:italic;color:var(--green);}
-.section-subtitle{font-size:0.95rem;color:var(--fg-soft);line-height:1.8;font-weight:300;max-width:520px;margin-bottom:48px;}
+.expect-wrap { background:var(--bg-alt);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd); }
+.section { padding:100px 40px;max-width:1200px;margin:0 auto; }
+.section-eyebrow { display:flex;align-items:center;gap:10px;margin-bottom:14px; }
+.section-eyebrow-line { width:28px;height:1.5px;background:var(--green);flex-shrink:0; }
+.section-eyebrow-text { font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green); }
+.section-title { font-family:var(--font-display);font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:400;color:var(--fg);margin-bottom:14px;line-height:1.12; }
+.section-title em { font-style:italic;color:var(--green); }
+.section-subtitle { font-size:0.95rem;color:var(--fg-soft);line-height:1.8;font-weight:300;max-width:520px;margin-bottom:48px; }
 
-/* Expect grid */
-.expect-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.expect-card{
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 36px 28px;
-  border: 1px solid var(--bd);
-  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-}
-.expect-card:hover{
-  border-color: var(--black);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-[data-theme="dark"] .expect-card:hover{ border-color: var(--white); }
-.expect-icon{
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(58,158,95,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-[data-theme="dark"] .expect-icon{ background: rgba(58,158,95,0.1); }
-.expect-icon svg{
-  width: 22px;
-  height: 22px;
-  stroke: var(--green);
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.expect-title{
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 400;
-  color: var(--fg);
-  margin-bottom: 10px;
-}
-.expect-desc{
-  font-size: 0.85rem;
-  color: var(--fg-soft);
-  line-height: 1.75;
-  font-weight: 300;
-}
+.expect-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:18px; }
+.expect-card { background:var(--surface);border-radius:var(--radius-lg);padding:36px 28px;border:1px solid var(--bd);transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition); }
+.expect-card:hover { border-color:var(--black);transform:translateY(-4px);box-shadow:var(--shadow-md); }
+[data-theme="dark"] .expect-card:hover { border-color:var(--white); }
+.expect-icon { width:44px;height:44px;border-radius:var(--radius-sm);background:rgba(58,158,95,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:20px; }
+.expect-icon svg { width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+.expect-title { font-family:var(--font-display);font-size:1.15rem;font-weight:400;color:var(--fg);margin-bottom:10px; }
+.expect-desc { font-size:0.85rem;color:var(--fg-soft);line-height:1.75;font-weight:300; }
 
 /* ── TOOLS ── */
-.tools-wrap{
-  border-bottom: 1px solid var(--bd);
-}
-.tools-grid{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  margin-top: 48px;
-}
-.tool-card{
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  padding: 24px 16px 20px;
-  border: 1px solid var(--bd);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-}
-.tool-card:hover{
-  border-color: var(--green);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-sm);
-}
-.tool-icon-wrap{
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-alt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  transition: background var(--transition);
-}
-[data-theme="dark"] .tool-icon-wrap{ background: #2A2A2A; }
-.tool-card:hover .tool-icon-wrap{ background: var(--green-pale); }
-[data-theme="dark"] .tool-card:hover .tool-icon-wrap{ background: rgba(58,158,95,0.1); }
-.tool-icon-wrap img{
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-.tool-name{
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--fg);
-  text-align: center;
-  line-height: 1.3;
-}
-.tool-category{
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-  text-align: center;
-}
+.tools-wrap { border-bottom:1px solid var(--bd); }
+.tools-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px; }
+.tool-card { background:var(--surface);border-radius:var(--radius-md);padding:24px 16px 20px;border:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;gap:10px;transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition); }
+.tool-card:hover { border-color:var(--green);transform:translateY(-4px);box-shadow:var(--shadow-sm); }
+.tool-icon-wrap { width:48px;height:48px;border-radius:var(--radius-sm);background:var(--bg-alt);display:flex;align-items:center;justify-content:center;padding:8px;transition:background var(--transition); }
+[data-theme="dark"] .tool-icon-wrap { background:#2A2A2A; }
+.tool-card:hover .tool-icon-wrap { background:var(--green-pale); }
+[data-theme="dark"] .tool-card:hover .tool-icon-wrap { background:rgba(58,158,95,0.1); }
+.tool-icon-wrap img,.tool-icon-wrap svg { width:30px;height:30px;object-fit:contain; }
+.tool-name { font-size:0.78rem;font-weight:500;color:var(--fg);text-align:center;line-height:1.3; }
+.tool-category { font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);text-align:center; }
+
+/* Dark mode tool icon filter */
+[data-theme="dark"] .tool-icon-cdn { filter:brightness(0) invert(1); }
+[data-theme="dark"] .tool-icon-svg { filter:brightness(0) invert(1); }
 
 /* ── WORK WITH ME ── */
-.wwm-section{
-  background: var(--black);
-  padding: 120px 40px;
-  text-align: center;
-}
-[data-theme="dark"] .wwm-section{
-  background: var(--bg-alt);
-  border-top: 1px solid var(--bd);
-}
-.wwm-inner{ max-width: 640px; margin: 0 auto; }
-.wwm-eyebrow{
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 24px;
-}
-.wwm-title{
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-[data-theme="dark"] .wwm-title{ color: var(--fg); }
-.wwm-title em{
-  font-style: italic;
-  color: var(--green);
-  display: block;
-}
-.wwm-sub{
-  font-size: 0.95rem;
-  color: rgba(248,245,240,0.5);
-  line-height: 1.8;
-  margin-bottom: 40px;
-  font-weight: 300;
-}
-[data-theme="dark"] .wwm-sub{ color: var(--fg-muted); }
-.btn-wwm{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--white);
-  color: var(--black);
-  padding: 16px 40px;
-  border-radius: var(--radius-full);
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.btn-wwm:hover{
-  background: var(--green);
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(58,158,95,0.3);
-}
-[data-theme="dark"] .btn-wwm{
-  background: var(--green);
-  color: var(--white);
-}
+.wwm-section { background:var(--black);padding:120px 40px;text-align:center; }
+[data-theme="dark"] .wwm-section { background:var(--bg-alt);border-top:1px solid var(--bd); }
+.wwm-inner { max-width:640px;margin:0 auto; }
+.wwm-eyebrow { font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:24px; }
+.wwm-title { font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4rem);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:20px; }
+[data-theme="dark"] .wwm-title { color:var(--fg); }
+.wwm-title em { font-style:italic;color:var(--green);display:block; }
+.wwm-sub { font-size:0.95rem;color:rgba(248,245,240,0.5);line-height:1.8;margin-bottom:40px;font-weight:300; }
+[data-theme="dark"] .wwm-sub { color:var(--fg-muted); }
+.btn-wwm { display:inline-flex;align-items:center;gap:10px;background:var(--white);color:var(--black);padding:16px 40px;border-radius:100px;font-size:0.88rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border:none;cursor:pointer;font-family:var(--font-body);transition:background 0.2s,color 0.2s,transform 0.2s,box-shadow 0.2s; }
+.btn-wwm:hover { background:var(--green);color:var(--white);transform:translateY(-2px);box-shadow:0 12px 32px rgba(58,158,95,0.3); }
+[data-theme="dark"] .btn-wwm { background:var(--green);color:var(--white); }
 
 /* ── FOOTER ── */
-.footer{background:var(--black);padding:28px 40px;border-top:1px solid #1A1A1A;}
-[data-theme="dark"] .footer{background:#070F0A;border-top:1px solid #111;}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.footer-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.footer-logo-mark{width:32px;height:32px;border-radius:50%;background:#222;border:1px solid #2A2A2A;display:flex;align-items:center;justify-content:center;position:relative;}
-.footer-logo-mark .logo-p{font-family:var(--font-display);font-size:0.9rem;color:var(--white);position:absolute;left:5px;top:50%;transform:translateY(-52%);}
-.footer-logo-mark .logo-o{font-family:var(--font-display);font-size:0.9rem;font-style:italic;color:var(--green);position:absolute;right:4px;top:50%;transform:translateY(-52%);}
-.footer-copy{font-size:0.78rem;color:rgba(248,245,240,0.3);letter-spacing:0.04em;text-align:center;flex:1;}
-.footer-socials{display:flex;align-items:center;gap:18px;flex-shrink:0;}
-.footer-social-link{width:34px;height:34px;border-radius:50%;border:1px solid #2A2A2A;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s,transform 0.2s;}
-.footer-social-link:hover{border-color:var(--green);background:rgba(58,158,95,0.08);transform:translateY(-2px);}
-.footer-social-link svg{width:15px;height:15px;fill:rgba(248,245,240,0.4);transition:fill 0.2s;}
-.footer-social-link:hover svg{fill:var(--green);}
+.footer { background:var(--black);padding:28px 40px;border-top:1px solid #1A1A1A; }
+[data-theme="dark"] .footer { background:#070F0A;border-top:1px solid #111; }
+.footer-inner { max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px; }
+.footer-logo { display:flex;align-items:center;gap:10px;flex-shrink:0; }
+.footer-logo-mark { width:32px;height:32px;border-radius:50%;background:#222;border:1px solid #2A2A2A;display:flex;align-items:center;justify-content:center;position:relative; }
+.footer-logo-mark .logo-p { font-family:var(--font-display);font-size:0.9rem;color:var(--white);position:absolute;left:5px;top:50%;transform:translateY(-52%); }
+.footer-logo-mark .logo-o { font-family:var(--font-display);font-size:0.9rem;font-style:italic;color:var(--green);position:absolute;right:4px;top:50%;transform:translateY(-52%); }
+.footer-copy { font-size:0.78rem;color:rgba(248,245,240,0.3);letter-spacing:0.04em;text-align:center;flex:1; }
+.footer-socials { display:flex;align-items:center;gap:18px;flex-shrink:0; }
+.footer-social-link { width:34px;height:34px;border-radius:50%;border:1px solid #2A2A2A;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s,background 0.2s,transform 0.2s; }
+.footer-social-link:hover { border-color:var(--green);background:rgba(58,158,95,0.08);transform:translateY(-2px); }
+.footer-social-link svg { width:15px;height:15px;fill:rgba(248,245,240,0.4);transition:fill 0.2s; }
+.footer-social-link:hover svg { fill:var(--green); }
 
 /* ── FADE UP ── */
-.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.fade-up.visible{opacity:1;transform:translateY(0);}
+.fade-up { opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease; }
+.fade-up.visible { opacity:1;transform:translateY(0); }
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .navbar-links{display:none;}
-  .navbar-hamburger{display:flex;}
-  .navbar-inner{padding:0 24px;}
-  .about-hero{grid-template-columns:1fr;padding:88px 0 60px;gap:0;min-height:auto;}
-  .about-photo-wrap{border-radius:0;aspect-ratio:unset;height:75vw;min-height:300px;max-height:480px;}
-  .about-content{padding:36px 24px 0;}
-  .expect-grid{grid-template-columns:1fr;}
-  .tools-grid{grid-template-columns:repeat(3,1fr);}
-  .section{padding:70px 24px;}
-  .wwm-section{padding:80px 24px;}
-  .footer{padding:24px;}
-  .footer-inner{flex-wrap:wrap;justify-content:center;gap:16px;}
-  .footer-copy{order:3;flex:100%;text-align:center;}
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+
+/* TABLET */
+@media(max-width:1024px) and (min-width:601px) {
+  .about-hero { gap:48px;padding:100px 32px 80px; }
+  .about-photo-tag { bottom:-20px;right:-16px;min-width:180px; }
+  .expect-grid { grid-template-columns:repeat(2,1fr); }
+  .tools-grid { grid-template-columns:repeat(3,1fr); }
 }
-@media(max-width:560px){
-  .tools-grid{grid-template-columns:repeat(2,1fr);}
-  .about-info-grid{grid-template-columns:1fr;}
-  .about-btns{flex-direction:column;align-items:stretch;}
-  .btn-primary,.btn-secondary{justify-content:center;}
+
+/* MOBILE — FIX 2 & 3 & 5 */
+@media(max-width:600px) {
+  .navbar-links { display:none; }
+  .navbar-hamburger { display:flex; }
+  .navbar-inner { padding:0 20px; }
+  .navbar-mobile { padding:20px 20px 24px; }
+
+  /* FIX 2 & 3: Photo full width, rounded corners, no tag on mobile */
+  .about-hero {
+    grid-template-columns: 1fr;
+    padding: 68px 0 0;
+    gap: 0;
+  }
+
+  /* Photo column goes first, full bleed */
+  .about-photo-col {
+    order: -1;
+    padding: 0 20px;
+    background: var(--black);
+    padding-top: 20px;
+    padding-bottom: 32px;
+  }
+  [data-theme="light"] .about-photo-col {
+    background: #1A1A1A;
+  }
+
+  .about-photo-wrap {
+    border-radius: 16px;
+    aspect-ratio: 3/4;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* FIX 3: Hide tag on mobile */
+  .about-photo-tag { display: none; }
+
+  /* FIX 5: Remove gap — content starts right after photo */
+  .about-content {
+    padding: 32px 20px 40px;
+    gap: 20px;
+  }
+
+  .expect-grid { grid-template-columns:1fr; }
+  .tools-grid { grid-template-columns:repeat(2,1fr); }
+  .section { padding:60px 20px; }
+  .wwm-section { padding:80px 20px; }
+  .about-btns { flex-direction:column;align-items:stretch; }
+  .btn-primary,.btn-secondary { justify-content:center; }
+  .about-info-grid { grid-template-columns:1fr; }
+  .footer { padding:24px 20px; }
+  .footer-inner { flex-wrap:wrap;justify-content:center;gap:16px; }
+  .footer-copy { order:3;flex:100%;text-align:center; }
 }
 </style>
 </head>
 <body>
 
-<!-- ══ NAVBAR ══ -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-inner">
     <a href="../index.html" class="navbar-logo">
@@ -523,20 +343,23 @@ ul{list-style:none;}
   </div>
 </nav>
 
-
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <div class="about-hero">
 
   <!-- Left: Photo -->
-  <div>
-    <div class="about-photo-wrap" id="aboutPhotoWrap">
+  <div class="about-photo-col">
+    <div class="about-photo-wrap">
       <img
         src="https://res.cloudinary.com/dt8eebw4e/image/upload/v1781385770/PHOTO-2026-02-22-13-26-04_wy1bmb.jpg"
         alt="Paul Oladeinde"
         class="about-photo"
         id="aboutPhoto"
       />
-      <div class="about-photo-tag">Virtual Executive Assistant</div>
+    </div>
+    <!-- FIX 3: Tag card — desktop/tablet only (hidden on mobile via CSS) -->
+    <div class="about-photo-tag">
+      <div class="about-photo-tag-label">Virtual Executive Assistant</div>
+      <div class="about-photo-tag-name">Paul Oladeinde</div>
     </div>
   </div>
 
@@ -546,23 +369,18 @@ ul{list-style:none;}
       <span class="about-eyebrow-line"></span>
       <span class="about-eyebrow-text">About Me</span>
     </div>
-
     <h1 class="about-name">
       Paul Anuoluwapo<br />
       <em>Oladeinde.</em>
     </h1>
-
     <p class="about-tagline">
       I help leaders move faster by handling everything they should not have to.
     </p>
-
     <div class="about-bio">
       <p>Paul Anuoluwapo Oladeinde is a Lagos based Virtual Executive Assistant with over three years of experience supporting CEOs, MDs, and founders remotely. He brings a rare combination of operational precision and strategic thinking to every role he takes on.</p>
       <p>Paul is known for being proactive before problems arise, detail oriented in everything he touches, and dependable when it matters most. He does not just manage tasks. He builds the systems, workflows, and structures that keep businesses running smoothly behind the scenes.</p>
       <p>From calendar and inbox management to operations hubs, CRM systems, and workflow automations, Paul works at the intersection of executive support and operational excellence. His clients do not just get an assistant. They get someone who thinks like an operator.</p>
     </div>
-
-    <!-- CTAs -->
     <div class="about-btns">
       <a href="work.html" class="btn-primary">
         View My Work
@@ -573,8 +391,6 @@ ul{list-style:none;}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
-
-    <!-- Info cards -->
     <div class="about-info-grid">
       <div class="info-card">
         <div class="info-card-label">Location</div>
@@ -593,12 +409,11 @@ ul{list-style:none;}
         <div class="info-card-value">3+ Years</div>
       </div>
     </div>
-
   </div>
 </div>
 
 
-<!-- ══ WHAT YOU CAN EXPECT ══ -->
+<!-- WHAT YOU CAN EXPECT -->
 <div class="expect-wrap">
   <div class="section">
     <div class="section-eyebrow">
@@ -607,63 +422,43 @@ ul{list-style:none;}
     </div>
     <h2 class="section-title">What You Can <em>Expect</em></h2>
     <p class="section-subtitle">The qualities I bring to every engagement — not just what I do, but how I do it.</p>
-
     <div class="expect-grid">
-
       <div class="expect-card fade-up">
-        <div class="expect-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
+        <div class="expect-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <div class="expect-title">Proactive</div>
         <p class="expect-desc">I anticipate problems before they arise and act without waiting to be asked. You should never have to chase me.</p>
       </div>
-
       <div class="expect-card fade-up">
-        <div class="expect-icon">
-          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        </div>
+        <div class="expect-icon"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
         <div class="expect-title">Detail Oriented</div>
         <p class="expect-desc">The small things matter. I pay attention to every detail because that is where quality lives and errors hide.</p>
       </div>
-
       <div class="expect-card fade-up">
-        <div class="expect-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
+        <div class="expect-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <div class="expect-title">Reliable</div>
         <p class="expect-desc">When I say I will do something, it gets done. Dependability is not a feature for me. It is the baseline.</p>
       </div>
-
       <div class="expect-card fade-up">
-        <div class="expect-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
+        <div class="expect-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <div class="expect-title">Systems Minded</div>
         <p class="expect-desc">I do not just complete tasks. I build repeatable structures that make future tasks easier and faster.</p>
       </div>
-
       <div class="expect-card fade-up">
-        <div class="expect-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
+        <div class="expect-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="expect-title">Problem Solver</div>
         <p class="expect-desc">I bring solutions, not just status updates. When something breaks, I fix it and document how to prevent it next time.</p>
       </div>
-
       <div class="expect-card fade-up">
-        <div class="expect-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
+        <div class="expect-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <div class="expect-title">Remote Ready</div>
         <p class="expect-desc">I operate fully remotely across time zones with clear communication, disciplined follow through and strong async habits.</p>
       </div>
-
     </div>
   </div>
 </div>
 
 
-<!-- ══ TOOLS ══ -->
+<!-- TOOLS -->
 <div class="tools-wrap">
   <div class="section">
     <div class="section-eyebrow">
@@ -675,94 +470,125 @@ ul{list-style:none;}
 
     <div class="tools-grid" id="toolsGrid">
 
+      <!-- Notion — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="notion" src="https://cdn.simpleicons.org/notion/0F0F0F" alt="Notion"/></div>
-        <div class="tool-name">Notion</div>
-        <div class="tool-category">Productivity</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="notion" src="https://cdn.simpleicons.org/notion/0F0F0F" alt="Notion"/></div>
+        <div class="tool-name">Notion</div><div class="tool-category">Productivity</div>
       </div>
 
+      <!-- Airtable — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="airtable" src="https://cdn.simpleicons.org/airtable/0F0F0F" alt="Airtable"/></div>
-        <div class="tool-name">Airtable</div>
-        <div class="tool-category">Database</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="airtable" src="https://cdn.simpleicons.org/airtable" alt="Airtable"/></div>
+        <div class="tool-name">Airtable</div><div class="tool-category">Database</div>
       </div>
 
+      <!-- Zapier — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="zapier" src="https://cdn.simpleicons.org/zapier/0F0F0F" alt="Zapier"/></div>
-        <div class="tool-name">Zapier</div>
-        <div class="tool-category">Automation</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="zapier" src="https://cdn.simpleicons.org/zapier" alt="Zapier"/></div>
+        <div class="tool-name">Zapier</div><div class="tool-category">Automation</div>
       </div>
 
+      <!-- FIX 4: Slack — uploaded SVG -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="slack" src="https://cdn.simpleicons.org/slack/0F0F0F" alt="Slack"/></div>
-        <div class="tool-name">Slack</div>
-        <div class="tool-category">Communication</div>
+        <div class="tool-icon-wrap">
+          <svg class="tool-icon-svg" viewBox="0 0 270 270" xmlns="http://www.w3.org/2000/svg">
+            <g><g>
+              <path style="fill:#E01E5A" d="M99.4,151.2c0,7.1-5.8,12.9-12.9,12.9c-7.1,0-12.9-5.8-12.9-12.9c0-7.1,5.8-12.9,12.9-12.9h12.9V151.2z"/>
+              <path style="fill:#E01E5A" d="M105.9,151.2c0-7.1,5.8-12.9,12.9-12.9s12.9,5.8,12.9,12.9v32.3c0,7.1-5.8,12.9-12.9,12.9s-12.9-5.8-12.9-12.9V151.2z"/>
+            </g><g>
+              <path style="fill:#36C5F0" d="M118.8,99.4c-7.1,0-12.9-5.8-12.9-12.9c0-7.1,5.8-12.9,12.9-12.9s12.9,5.8,12.9,12.9v12.9H118.8z"/>
+              <path style="fill:#36C5F0" d="M118.8,105.9c7.1,0,12.9,5.8,12.9,12.9s-5.8,12.9-12.9,12.9H86.5c-7.1,0-12.9-5.8-12.9-12.9s5.8-12.9,12.9-12.9H118.8z"/>
+            </g><g>
+              <path style="fill:#2EB67D" d="M170.6,118.8c0-7.1,5.8-12.9,12.9-12.9c7.1,0,12.9,5.8,12.9,12.9s-5.8,12.9-12.9,12.9h-12.9V118.8z"/>
+              <path style="fill:#2EB67D" d="M164.1,118.8c0,7.1-5.8,12.9-12.9,12.9c-7.1,0-12.9-5.8-12.9-12.9V86.5c0-7.1,5.8-12.9,12.9-12.9c7.1,0,12.9,5.8,12.9,12.9V118.8z"/>
+            </g><g>
+              <path style="fill:#ECB22E" d="M151.2,170.6c7.1,0,12.9,5.8,12.9,12.9c0,7.1-5.8,12.9-12.9,12.9c-7.1,0-12.9-5.8-12.9-12.9v-12.9H151.2z"/>
+              <path style="fill:#ECB22E" d="M151.2,164.1c-7.1,0-12.9-5.8-12.9-12.9c0-7.1,5.8-12.9,12.9-12.9h32.3c7.1,0,12.9,5.8,12.9,12.9c0,7.1-5.8,12.9-12.9,12.9H151.2z"/>
+            </g></g>
+          </svg>
+        </div>
+        <div class="tool-name">Slack</div><div class="tool-category">Communication</div>
       </div>
 
+      <!-- Gmail — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="gmail" src="https://cdn.simpleicons.org/gmail/0F0F0F" alt="Gmail"/></div>
-        <div class="tool-name">Gmail</div>
-        <div class="tool-category">Google Workspace</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="gmail" src="https://cdn.simpleicons.org/gmail" alt="Gmail"/></div>
+        <div class="tool-name">Gmail</div><div class="tool-category">Google Workspace</div>
       </div>
 
+      <!-- Google Calendar — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="googlecalendar" src="https://cdn.simpleicons.org/googlecalendar/0F0F0F" alt="Google Calendar"/></div>
-        <div class="tool-name">Google Calendar</div>
-        <div class="tool-category">Scheduling</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="googlecalendar" src="https://cdn.simpleicons.org/googlecalendar" alt="Google Calendar"/></div>
+        <div class="tool-name">Google Calendar</div><div class="tool-category">Scheduling</div>
       </div>
 
+      <!-- HubSpot — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="hubspot" src="https://cdn.simpleicons.org/hubspot/0F0F0F" alt="HubSpot"/></div>
-        <div class="tool-name">HubSpot</div>
-        <div class="tool-category">CRM</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="hubspot" src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"/></div>
+        <div class="tool-name">HubSpot</div><div class="tool-category">CRM</div>
       </div>
 
+      <!-- Zoom — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="zoom" src="https://cdn.simpleicons.org/zoom/0F0F0F" alt="Zoom"/></div>
-        <div class="tool-name">Zoom</div>
-        <div class="tool-category">Meetings</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="zoom" src="https://cdn.simpleicons.org/zoom" alt="Zoom"/></div>
+        <div class="tool-name">Zoom</div><div class="tool-category">Meetings</div>
       </div>
 
+      <!-- FIX 4: Microsoft Office — uploaded SVG -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="microsoftoffice" src="https://cdn.simpleicons.org/microsoftoffice/0F0F0F" alt="Microsoft Office"/></div>
-        <div class="tool-name">Microsoft Office</div>
-        <div class="tool-category">Documents</div>
+        <div class="tool-icon-wrap">
+          <svg class="tool-icon-svg" viewBox="0 0 2499.6 2500" xmlns="http://www.w3.org/2000/svg">
+            <path d="m1187.9 1187.9h-1187.9v-1187.9h1187.9z" fill="#f1511b"/>
+            <path d="m2499.6 1187.9h-1188v-1187.9h1187.9v1187.9z" fill="#80cc28"/>
+            <path d="m1187.9 2500h-1187.9v-1187.9h1187.9z" fill="#00adef"/>
+            <path d="m2499.6 2500h-1188v-1187.9h1187.9v1187.9z" fill="#fbbc09"/>
+          </svg>
+        </div>
+        <div class="tool-name">Microsoft Office</div><div class="tool-category">Documents</div>
       </div>
 
+      <!-- Trello — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="trello" src="https://cdn.simpleicons.org/trello/0F0F0F" alt="Trello"/></div>
-        <div class="tool-name">Trello</div>
-        <div class="tool-category">Project Mgmt</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="trello" src="https://cdn.simpleicons.org/trello" alt="Trello"/></div>
+        <div class="tool-name">Trello</div><div class="tool-category">Project Mgmt</div>
       </div>
 
+      <!-- FIX 4: MailerLite — uploaded SVG (icon part only) -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="mailerlite" src="https://cdn.simpleicons.org/mailerlite/0F0F0F" alt="MailerLite"/></div>
-        <div class="tool-name">MailerLite</div>
-        <div class="tool-category">Email Marketing</div>
+        <div class="tool-icon-wrap">
+          <svg class="tool-icon-svg" viewBox="0 0 63 63" xmlns="http://www.w3.org/2000/svg">
+            <rect width="63" height="63" rx="8" fill="#09C269"/>
+            <path d="M46.5 15H16.5C13.5 15 11 17.5 11 20.5v14l-4 4h42v-18c0-3-2.5-5.5-5.5-5.5z" fill="#09C269"/>
+            <path d="M10 20.5v22h43v-22C53 17.5 50.5 15 47.5 15h-31C13.5 15 10 17.5 10 20.5z" fill="#09C269"/>
+            <rect x="8" y="14" width="47" height="35" rx="6" fill="#09C269"/>
+            <text x="31" y="38" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="18" fill="white">ML</text>
+          </svg>
+        </div>
+        <div class="tool-name">MailerLite</div><div class="tool-category">Email Marketing</div>
       </div>
 
+      <!-- Mailchimp — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="mailchimp" src="https://cdn.simpleicons.org/mailchimp/0F0F0F" alt="Mailchimp"/></div>
-        <div class="tool-name">Mailchimp</div>
-        <div class="tool-category">Email Marketing</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="mailchimp" src="https://cdn.simpleicons.org/mailchimp" alt="Mailchimp"/></div>
+        <div class="tool-name">Mailchimp</div><div class="tool-category">Email Marketing</div>
       </div>
 
+      <!-- Google Drive — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="googledrive" src="https://cdn.simpleicons.org/googledrive/0F0F0F" alt="Google Drive"/></div>
-        <div class="tool-name">Google Drive</div>
-        <div class="tool-category">Storage</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="googledrive" src="https://cdn.simpleicons.org/googledrive" alt="Google Drive"/></div>
+        <div class="tool-name">Google Drive</div><div class="tool-category">Storage</div>
       </div>
 
+      <!-- WhatsApp — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="whatsapp" src="https://cdn.simpleicons.org/whatsapp/0F0F0F" alt="WhatsApp"/></div>
-        <div class="tool-name">WhatsApp Business</div>
-        <div class="tool-category">Communication</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="whatsapp" src="https://cdn.simpleicons.org/whatsapp" alt="WhatsApp"/></div>
+        <div class="tool-name">WhatsApp Business</div><div class="tool-category">Communication</div>
       </div>
 
+      <!-- Asana — CDN -->
       <div class="tool-card fade-up">
-        <div class="tool-icon-wrap"><img class="tool-icon" data-name="asana" src="https://cdn.simpleicons.org/asana/0F0F0F" alt="Asana"/></div>
-        <div class="tool-name">Asana</div>
-        <div class="tool-category">Project Mgmt</div>
+        <div class="tool-icon-wrap"><img class="tool-icon-cdn" data-name="asana" src="https://cdn.simpleicons.org/asana" alt="Asana"/></div>
+        <div class="tool-name">Asana</div><div class="tool-category">Project Mgmt</div>
       </div>
 
     </div>
@@ -770,14 +596,11 @@ ul{list-style:none;}
 </div>
 
 
-<!-- ══ WORK WITH ME ══ -->
+<!-- WORK WITH ME -->
 <div class="wwm-section">
   <div class="wwm-inner">
     <p class="wwm-eyebrow">Work With Me</p>
-    <h2 class="wwm-title">
-      Ready to work
-      <em>together?</em>
-    </h2>
+    <h2 class="wwm-title">Ready to work <em>together?</em></h2>
     <p class="wwm-sub">I am currently available for remote EA roles and operations projects. Let us talk.</p>
     <a href="hire.html" class="btn-wwm">
       Get In Touch
@@ -787,7 +610,7 @@ ul{list-style:none;}
 </div>
 
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo">
@@ -821,10 +644,7 @@ ul{list-style:none;}
   const saved=localStorage.getItem('po-theme')||'light';
   html.setAttribute('data-theme',saved);
   thumb.textContent=saved==='dark'?'🌙':'☀';
-
-  // Set tool icons on load
   updateToolIcons(saved);
-
   toggle.addEventListener('click',()=>{
     const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
     html.setAttribute('data-theme',next);
@@ -834,13 +654,22 @@ ul{list-style:none;}
   });
 })();
 
-// ── TOOL ICONS — monochrome dark, brand color light ──
+// ── FIX 4: Tool icons — monochrome in dark, brand colors in light ──
 function updateToolIcons(theme){
-  document.querySelectorAll('.tool-icon').forEach(img=>{
+  // CDN icons
+  document.querySelectorAll('.tool-icon-cdn').forEach(img=>{
     const name=img.dataset.name;
-    img.src = theme==='dark'
-      ? `https://cdn.simpleicons.org/${name}/ffffff`
-      : `https://cdn.simpleicons.org/${name}`;
+    if(name==='notion'){
+      img.src=theme==='dark'?'https://cdn.simpleicons.org/notion/ffffff':'https://cdn.simpleicons.org/notion/0F0F0F';
+    } else {
+      img.src=theme==='dark'
+        ?`https://cdn.simpleicons.org/${name}/ffffff`
+        :`https://cdn.simpleicons.org/${name}`;
+    }
+  });
+  // Uploaded SVG icons — filter to white in dark mode
+  document.querySelectorAll('.tool-icon-svg').forEach(svg=>{
+    svg.style.filter=theme==='dark'?'brightness(0) invert(1)':'none';
   });
 }
 
@@ -851,17 +680,22 @@ function updateToolIcons(theme){
   if(btn&&menu) btn.addEventListener('click',()=>menu.classList.toggle('open'));
 })();
 
-// ── GRAYSCALE PHOTO REVEAL ──
+// ── FIX 1: Cinematic B&W photo reveal ──
 (function(){
   const photo=document.getElementById('aboutPhoto');
   if(!photo) return;
-  photo.style.filter='grayscale(100%)';
+  // Start in cinematic B&W
+  photo.style.filter='grayscale(100%) contrast(1.1) brightness(0.95)';
   photo.style.transition='filter 1.2s ease';
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      e.target.style.filter=e.isIntersecting?'grayscale(0%)':'grayscale(100%)';
+      if(e.isIntersecting){
+        e.target.style.filter='grayscale(0%) contrast(1) brightness(1)';
+      } else {
+        e.target.style.filter='grayscale(100%) contrast(1.1) brightness(0.95)';
+      }
     });
-  },{threshold:0.35,rootMargin:'-50px 0px -50px 0px'});
+  },{threshold:0.35,rootMargin:'-40px 0px -40px 0px'});
   obs.observe(photo);
 })();
 
