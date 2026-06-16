@@ -682,21 +682,46 @@ function updateToolIcons(theme){
 
 // ── FIX 1: Cinematic B&W photo reveal ──
 (function(){
-  const photo=document.getElementById('aboutPhoto');
+  const photo = document.getElementById('aboutPhoto');
   if(!photo) return;
-  // Start in cinematic B&W
-  photo.style.filter='grayscale(100%) contrast(1.1) brightness(0.95)';
-  photo.style.transition='filter 1.2s ease';
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.style.filter='grayscale(0%) contrast(1) brightness(1)';
+
+  const BW  = 'grayscale(100%) contrast(1.1) brightness(0.95)';
+  const CLR = 'grayscale(0%) contrast(1) brightness(1)';
+
+  // Always force B&W on load — no exceptions
+  photo.style.filter = BW;
+  photo.style.transition = 'filter 1.4s ease';
+
+  // Track whether user has scrolled at all
+  let hasScrolled = false;
+
+  window.addEventListener('scroll', () => { hasScrolled = true; }, { once: true });
+
+  // Intersection observer — only reveal color when photo is
+  // substantially in view AND user has scrolled
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.6 && hasScrolled) {
+        photo.style.filter = CLR;
       } else {
-        e.target.style.filter='grayscale(100%) contrast(1.1) brightness(0.95)';
+        photo.style.filter = BW;
       }
     });
-  },{threshold:0.35,rootMargin:'-40px 0px -40px 0px'});
+  }, {
+    threshold: [0, 0.3, 0.6, 0.9],
+    rootMargin: '-80px 0px -80px 0px'
+  });
+
   obs.observe(photo);
+
+  // Mobile tap support
+  photo.addEventListener('click', () => {
+    if(photo.style.filter === CLR){
+      photo.style.filter = BW;
+    } else {
+      photo.style.filter = CLR;
+    }
+  });
 })();
 
 // ── FADE UP ──
